@@ -1,0 +1,54 @@
+{% extends "dlcf/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Search</title>
+{% endblock title %}
+
+{% block style %}
+@media (max-width: 768px) {
+    .dep{
+        display:none;
+    }
+}
+{% endblock style %}
+
+{% block content %}
+<div class="container mt-5">
+    <marquee><b>Note that Desktop view displays full web layouts and features</b></marquee>
+    <h1>Searched Members</h1>
+    
+    <!-- Table to display registered members -->
+    <table class="table d-md-table">
+        <thead class="text-light">
+            <tr>
+                <th>Name</th>
+                <th>Hostel</th>
+                <th>Phone No</th>
+                <th class="dep">Dep</th>
+                <th class="icons">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in members %}
+            <tr class="bg-light">
+                <td>{{ member.first_name }} {{ member.last_name }}</td>
+                <td>{{ member.hostel }}</td>
+                <td>{{ member.phone_no }}</td>
+                <td class="dep">{{ member.department }}</td>
+                <td class="icons">
+                    <a href="{% url 'update-fresher' id=member.id %}" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'fresher-info' id=member.id %}" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </td>
+            </tr>
+            <!-- Additional content as needed -->
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends "dlcf/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Search</title>
+{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Search and Filter</h1>
+    
+    <!-- Search Form -->
+    <form method="post" action="{% url 'search' %}">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search by name" aria-label="Search" aria-describedby="search-button">
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="filter-select">Filter By:</label>
+            <select class="form-select" name="location" id="filter-select">
+                <option value="">Select Location</option>
+                <option value="Location1">Location 1</option>
+                <option value="Location2">Location 2</option>
+            </select>
+        </div>
+
+        <div class="input-group mt-3">
+            <input type="text" name="h" class="form-control" placeholder="Search by hostel" aria-label="Search" aria-describedby="search-button">
+        </div>
+
+        <button type="submit" class="btn btn-primary me-auto mt-5">Search</button>
+    </form>
+</div>
+{% endblock content %}

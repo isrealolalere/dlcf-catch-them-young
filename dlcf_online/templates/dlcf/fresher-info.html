@@ -1,0 +1,27 @@
+{% extends "dlcf/base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Fresher's Info</title>
+{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Fresher's Information</h1>
+    
+    <!-- Member Details -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Details</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>First Name:</strong> {{ member.first_name }}</li>
+                <li class="list-group-item"><strong>Last Name:</strong> {{ member.last_name }}</li>
+                <li class="list-group-item"><strong>Hostel:</strong> {{ member.hostel }}</li>
+                <li class="list-group-item"><strong>Department:</strong> {{ member.department }}</li>
+                <li class="list-group-item"><strong>Phone No:</strong> {{ member.phone_no }}</li>
+                <li class="list-group-item"><strong>Membership Status:</strong> {% if member.membership %}True{% else %}False{% endif %}</li>
+                <li class="list-group-item"><strong>Location:</strong> {{ member.location }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}
